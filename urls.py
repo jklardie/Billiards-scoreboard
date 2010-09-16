@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     # Example:
     # (r'^jongGeleerd/', include('jongGeleerd.foo.urls')),
 
-    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
+#    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
 )

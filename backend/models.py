@@ -55,6 +55,7 @@ class Match(models.Model):
     away_player = models.ForeignKey(Player, related_name="away_match")
     away_player_moyenne = models.IntegerField(max_length=3)
     date = models.DateField()
+    pub = models.ForeignKey(Pub)
     arbiter = models.ForeignKey(Player, related_name="arbiter_at_match")
     writer = models.ForeignKey(Player, related_name="writer_at_match")
     agenda_item = models.ForeignKey(AgendaItem)
@@ -69,5 +70,5 @@ class MatchTurn(models.Model):
     score = models.IntegerField(max_length=2)
     
     def __unicode__(self):
-        return self.match + " - " + self.player.__unicode__() + " turn: " + self.turn
+        return self.match.__unicode__() + " - " + self.player.__unicode__() + " turn: " + str(self.turn)
     

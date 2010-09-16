@@ -47,10 +47,10 @@ class MatchAdmin(admin.ModelAdmin):
     search_fields = ['date', 'home_player', 'away_player']
         
     fieldsets = [
-        ('Players',         {'fields': ['home_player', 'home_player_moyenne', 
-                                        'away_player', 'away_player_moyenne'] }),
-        ('Dates',           {'fields': ['date', 'agenda_item'] }),
-        ('Additional info', {'fields': ['arbiter', 'writer'] })
+        ('Players',                 {'fields': ['home_player', 'home_player_moyenne', 
+                                                'away_player', 'away_player_moyenne'] }),
+        ('Date and location',       {'fields': ['date', 'pub'] }),
+        ('Competition match info',  {'fields': ['arbiter', 'writer', 'agenda_item'] })
     ]
     
 
