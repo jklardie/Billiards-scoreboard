@@ -21,9 +21,9 @@ class PlayerAdmin(admin.ModelAdmin):
     search_fields = ['fullname', 'club']
         
     fieldsets = [
-        ('Person',                  {'fields': ['firstname', 'lastname'] }),
+        ('Person',                  {'fields': ['user'] }),
         ('Billiard information',    {'fields': ['club', 'moyenne'] }),
-        ('Contact information',     {'fields': ['phone', 'email'] }),
+        ('Contact information',     {'fields': ['phone'] }),
         ('Address',                 {'fields': ['address', 'postal_code', 'city'] })
     ]
     
@@ -32,7 +32,7 @@ class AgendaItemAdmin(admin.ModelAdmin):
     search_fields = ['date', 'pub']
         
     fieldsets = [
-        (None,          {'fields': ['date'] }),
+        (None,          {'fields': ['date', 'is_competition'] }),
         ('Location',    {'fields': ['pub'] }),
         ('Clubs',       {'fields': ['home_club', 'away_club'] })
     ]
@@ -43,14 +43,14 @@ class MatchTurnInline(admin.TabularInline):
     
 class MatchAdmin(admin.ModelAdmin):
     inlines = [MatchTurnInline]
-    list_display = ('date', 'home_player', 'away_player')
-    search_fields = ['date', 'home_player', 'away_player']
+    list_display = ('home_player', 'away_player')
+    search_fields = ['home_player', 'away_player']
         
     fieldsets = [
+        (None,  {'fields': ['agenda_item'] }),
         ('Players',                 {'fields': ['home_player', 'home_player_moyenne', 
                                                 'away_player', 'away_player_moyenne'] }),
-        ('Date and location',       {'fields': ['date', 'pub'] }),
-        ('Competition match info',  {'fields': ['arbiter', 'writer', 'agenda_item'] })
+        ('Competition match info',  {'fields': ['arbiter', 'writer'] })
     ]
     
 
